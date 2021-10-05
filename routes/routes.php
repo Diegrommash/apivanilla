@@ -25,8 +25,17 @@ if(count(array_filter($routeArray)) == 0){
 
             if(isset($_SERVER['REQUEST_METHOD']) && $_SERVER['REQUEST_METHOD'] == 'POST'){
                 
+                $data = array(
+                    'userName' => $_POST['userName'],
+                    'email' => $_POST['email'],
+                    'password' => $_POST['password'],
+                    'image' => $_FILES['image']
+                );            
+
                 $login = new UserController();
-                $login->create();
+                $login->add($data);
+
+                return;
 
             }
    
